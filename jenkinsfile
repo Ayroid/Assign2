@@ -14,10 +14,11 @@ pipeline {
         stage('Deploy to Tomcat') {
             steps {
                 script {
-                    // Copy the WAR file to the Tomcat Docker container
-                    docker.image('tomcat:latest').inside('-v /target:/usr/local/tomcat/webapps/') {
-                        sh 'cp /usr/local/tomcat/webapps/your-webapp-1.0-SNAPSHOT.war /usr/local/tomcat/webapps/'
-                    }
+                    // Create the target directory if it doesn't exist
+                    sh 'mkdir -p /home/ayroid/Documents/warfiles'
+
+                    // Copy the WAR file to the target directory
+                    sh 'cp target/motiverse.war /home/ayroid/Documents/warfiles/'
                 }
             }
         }
