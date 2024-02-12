@@ -18,7 +18,7 @@ pipeline {
                     sh 'mkdir -p /home/ayroid/Documents/warfiles'
 
                     // Copy the WAR file to the target directory
-                    sh 'cp target/motiverse.war /home/ayroid/Documents/warfiles/'
+                    sh 'cp -f target/motiverse.war /home/ayroid/Documents/warfiles/'
                 }
             }
         }
