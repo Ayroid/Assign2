@@ -2,13 +2,6 @@ pipeline {
     agent any
 
     stages {
-        stage('Checkout') {
-            steps {
-                // Checkout your Java project from version control
-                checkout scm
-            }
-        }
-
         stage('Build') {
             steps {
                 script {
@@ -21,9 +14,12 @@ pipeline {
         stage('Deploy to Tomcat') {
             steps {
                 script {
-                    sh 'echo "Deploying to Tomcat server..."'
+                    sh 'pwd'
+                    // Create the target directory if it doesn't exist
+                    sh 'mkdir -p /home/ayroid/Documents/warfiles'
+
                     // Copy the WAR file to the target directory
-                    sh 'docker cp target/*.war tomcatServer:/usr/local/tomcat/webapps/'
+                    sh 'cp -f target/motiverse.war /home/ayroid/Documents/warfiles/'
                 }
             }
         }
