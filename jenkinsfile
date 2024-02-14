@@ -15,7 +15,7 @@ pipeline {
             steps {
                 script {
                     // Copy the WAR file to the target directory
-                    sh 'docker cp target/motiverse.war tomcatServer:/usr/local/tomcat/webapps/'
+                    sh 'docker cp target/*.war tomcatServer:/usr/local/tomcat/webapps/'
                 }
             }
         }
