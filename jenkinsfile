@@ -14,11 +14,8 @@ pipeline {
         stage('Deploy to Tomcat') {
             steps {
                 script {
-                    // Create the target directory if it doesn't exist
-                    sh 'mkdir -p /home/ayroid/Documents/warfiles'
-
                     // Copy the WAR file to the target directory
-                    sh 'cp -f target/motiverse.war /home/ayroid/Documents/warfiles/'
+                    sh 'docker cp target/motiverse.war tomcatServer:/usr/local/tomcat/webapps/'
                 }
             }
         }
