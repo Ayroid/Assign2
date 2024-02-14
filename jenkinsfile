@@ -2,6 +2,13 @@ pipeline {
     agent any
 
     stages {
+        stage('Checkout') {
+            steps {
+                // Checkout your Java project from version control
+                checkout scm
+            }
+        }
+
         stage('Build') {
             steps {
                 script {
